@@ -19,11 +19,26 @@ namespace project_MasterMind_1
     public partial class MainWindow : Window
     {
         private readonly string[] colors = { "Red", "Yellow", "Orange", "White", "Green", "Blue" };
+        private string[] generatedCode = new string[4];
 
+        private void GenerateRandomCode()
+        {
+            Random random = new Random();  
+            for (int i = 0; i < generatedCode.Length; i++)
+            {
+                generatedCode[i] = colors[random.Next(colors.Length)];  
+            }
+            // Toon de code in het titelvenster voor testdoeleinden
+            this.Title = $"Mastermind - Geheime Code: {string.Join(", ", generatedCode)}";  
+
+
+
+        }
         public MainWindow()
         {
             InitializeComponent();
             InitializeComboBoxes();
+            GenerateRandomCode();
         }
         private void InitializeComboBoxes()
         {
