@@ -6,25 +6,25 @@
         xmlns:local="clr-namespace:project_MasterMind_1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="Background">
         <!-- ComboBox 1 en bijbehorende Label -->
         <ComboBox x:Name="ComboBox1" Width="195" Height="20" HorizontalAlignment="Left" Margin="2,19" VerticalAlignment="Top" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Label x:Name="Label1" Width="195" Height="150" HorizontalAlignment="Left" Margin="2,49" VerticalAlignment="Top" Content="Geen kleur gekozen" BorderBrush="Gray" BorderThickness="1"/>
+        <Label x:Name="Label1" Width="190" Height="150" HorizontalAlignment="Left" Margin="2,49" VerticalAlignment="Top" Content="Geen kleur gekozen" BorderBrush="Gray" BorderThickness="5" />
 
         <!-- ComboBox 2 en bijbehorende Label -->
         <ComboBox x:Name="ComboBox2" Width="195" Height="20" HorizontalAlignment="Left" Margin="202,19" VerticalAlignment="Top" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Label x:Name="Label2" Width="195" Height="150" HorizontalAlignment="Left" Margin="202,49" VerticalAlignment="Top" Content="Geen kleur gekozen" BorderBrush="Gray" BorderThickness="1"/>
-
-        <!-- ComboBox 3 en bijbehorende Label -->
-        <ComboBox x:Name="ComboBox3" Width="195" Height="20" HorizontalAlignment="Right" Margin="2,19" VerticalAlignment="Top" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Label x:Name="Label3" Width="195" Height="150" HorizontalAlignment="Right" Margin="2,49" VerticalAlignment="Top" Content="Geen kleur gekozen" BorderBrush="Gray" BorderThickness="1"/>
+        <Label x:Name="Label2" Width="190" Height="150" HorizontalAlignment="Left" Margin="202,49" VerticalAlignment="Top" Content="Geen kleur gekozen" BorderBrush="Gray" BorderThickness="5"/>
 
         <!-- ComboBox 4 en bijbehorende Label -->
-        <ComboBox x:Name="ComboBox4" Width="195" Height="20" HorizontalAlignment="Right" Margin="202,19" VerticalAlignment="Top" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Label x:Name="Label4" Width="195" Height="150" HorizontalAlignment="Right" Margin="202,49" VerticalAlignment="Top" Content="Geen kleur gekozen" BorderBrush="Gray" BorderThickness="1"/>
+        <ComboBox x:Name="ComboBox4" Width="195" Height="20" HorizontalAlignment="Right" Margin="2,19" VerticalAlignment="Top" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Label x:Name="Label4" Width="190" Height="150" HorizontalAlignment="Right" Margin="2,49" VerticalAlignment="Top" Content="Geen kleur gekozen" BorderBrush="Gray" BorderThickness="5"/>
+
+        <!-- ComboBox 3 en bijbehorende Label -->
+        <ComboBox x:Name="ComboBox3" Width="195" Height="20" HorizontalAlignment="Right" Margin="202,19" VerticalAlignment="Top" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Label x:Name="Label3" Width="190" Height="150" HorizontalAlignment="Right" Margin="202,49" VerticalAlignment="Top" Content="Geen kleur gekozen" BorderBrush="Gray" BorderThickness="5"/>
 
         <!-- Valideer-knop -->
-        <Button x:Name="Button" Content="Valideren" Width="300" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" Click="ValidateButton_Click"/>
+        <Button x:Name="Button" Content="Valideren" Width="300" Height="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20" Click="ValidateButton_Click" BorderBrush="Gray" BorderThickness="2"/>
     </Grid>
 </Window>
 

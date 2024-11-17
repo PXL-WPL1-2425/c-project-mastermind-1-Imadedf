@@ -22,7 +22,31 @@ namespace project_MasterMind_1
     {
         private readonly string[] colors = { "Red", "Yellow", "Orange", "White", "Green", "Blue" };
         private string[] generatedCode = new string[4];
+        public MainWindow()
+        {
+            InitializeComponent();
+            InitializeComboBoxes();
+            GenerateRandomCode();
+        }
 
+        private void ResetLabelBorders()
+        {
+            Label1.BorderBrush = Brushes.Gray;
+            Label2.BorderBrush = Brushes.Gray;
+            Label3.BorderBrush = Brushes.Gray;
+            Label4.BorderBrush = Brushes.Gray;
+        }
+
+        private void SetLabelBorder(int index, Brush color)
+        {
+            switch (index)
+            {
+                case 0: Label1.BorderBrush = color; break;
+                case 1: Label2.BorderBrush = color; break;
+                case 2: Label3.BorderBrush = color; break;
+                case 3: Label4.BorderBrush = color; break;
+            }
+        }
         private void GenerateRandomCode()
         {
             Random random = new Random();
@@ -36,12 +60,7 @@ namespace project_MasterMind_1
 
 
         }
-        public MainWindow()
-        {
-            InitializeComponent();
-            InitializeComboBoxes();
-            GenerateRandomCode();
-        }
+
         private void InitializeComboBoxes()
         {
             foreach (var color in colors)
@@ -55,9 +74,53 @@ namespace project_MasterMind_1
 
         private void ValidateButton_Click(object sender, RoutedEventArgs e)
         {
-            // Placeholder for validation logic
-        }
+            
+            Button sndr = (Button)sender;
 
+     
+
+            // Verkrijg geselecteerde kleuren van ComboBoxen
+            string[] userInput = {
+                 ComboBox1.SelectedItem as string,
+                 ComboBox2.SelectedItem as string,
+                 ComboBox3.SelectedItem as string,
+                 ComboBox4.SelectedItem as string
+            };
+            // Maak een lijst om te traceren welke posities al correct gematcht zijn
+            bool[] matched = new bool[4];
+
+            // Reset de borders
+            ResetLabelBorders();
+
+            // Controleer exacte matches (rode rand)
+            for (int i = 0; i < 4; i++)
+            {
+                if (userInput[i] == generatedCode[i])
+                {
+                    matched[i] = true;
+                    SetLabelBorder(i, Brushes.DarkRed); // Rode rand voor juiste kleur en positie
+                }
+            }
+
+            // Controleer kleuren die elders voorkomen (witte rand)
+            for (int i = 0; i < 4; i++)
+            {
+                if (matched[i]) continue; // Als deze positie al correct is, overslaan
+
+                for (int j = 0; j < 4; j++)
+                {
+                    if (!matched[j] && userInput[i] == generatedCode[j])
+                    {
+                        matched[j] = true; // Markeer deze als verwerkt
+                        SetLabelBorder(i, Brushes.Wheat); // Witte rand voor juiste kleur op verkeerde positie
+                        break;
+                    }
+                }
+            }
+
+
+
+        }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (sender is not ComboBox comboBox)
@@ -90,15 +153,14 @@ namespace project_MasterMind_1
                     correspondingLabel.Background = Brushes.Transparent;
                     correspondingLabel.Content = "Geen kleur gekozen";
                 }
-
-
-
-
-
             }
 
 
 
+
+
         }
-    }
+    } 
 }
+
+
